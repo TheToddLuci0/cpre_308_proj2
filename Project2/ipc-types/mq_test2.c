@@ -117,5 +117,12 @@ int main(int argc, char** argv)
 		perror("mq_send\n");
 		return -1;
 	}
+	char my_string2[] = "I am Pond";
+	
+	if( mq_send(msg_queue, my_string2, strlen(my_string), 12))
+	{
+		perror("mq_send\n");
+		return -1;
+	}
 	return 0;
 }

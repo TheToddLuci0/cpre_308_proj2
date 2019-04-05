@@ -75,6 +75,13 @@ int main(int argc, char** argv)
 		return -1;
 	}
 	printf("Received message \"%s\"\n", buffer);
+	size = mq_receive(msg_queue, buffer, attr.mq_msgsize, &priority);
+	if( size == -1)
+	{
+		perror("mq_receive");
+		return -1;
+	}
+	printf("Received message \"%s\"\n", buffer);
 	mq_unlink("/CprE308-Queue");
 	return 0;
 }
